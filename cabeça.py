@@ -7,10 +7,10 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 import random
 
 # Dados
-user = 'pintocu'
-senha = 'bostamijo'
-foto = 'https://www.instagram.com/p/CSobtcuLYNK/'
-frase = 'que fera'
+user = 'Estoradores'
+senha = 'pikuda'
+foto = 'https://www.instagram.com/p/CTGHPMig3-F/'
+amigos = ['@werisk', '@rzkcial']
 
 # Abrir Navegador
 cwd = os.getcwd()
@@ -30,19 +30,52 @@ botão_senha.click()
 botão_senha.clear()
 botão_senha.send_keys(senha)
 botão_senha.send_keys(Keys.RETURN)
-time.sleep(5)
+time.sleep(6)
 
 # assessar foto
 driver.get(foto)
+time.sleep(3)
 
-# Seguir, curtir, Comentar
+# Seguir
+try:
+    driver.find_element_by_xpath("//button[contains(text(),'Seguir')]").click()
+    time.sleep(2)
+except:
+    print('Error!')
+else:
+    print('segui não')
+
+# curtir Publicação
+try:
+    driver.find_element_by_xpath("//svg[@class='_8-yf5 ']").click()
+    time.sleep(0.5)
+
+except:
+    print('Error3!')
+else:
+    print('tudo ok')
+
+# Comentar
+def digite(frase, ondedigitar):
+    for letra in frase:
+        ondedigitar.send_keys(letra)
+        time.sleep(random.randint(1,5)/30)
 time.sleep(2)
-campo_comentario = driver.find_element_by_class_name("Ypffh")
-time.sleep(random.randint(2,5))
-campo_comentario.send_keys(frase)
-time.sleep(random.randint(30,120))
-driver.find_element_by_xpath("//button[contains(text(),'Publicar')]").click()
 
-
-
-print('fim')
+print(len(amigos))
+while True:
+    try:
+        driver.find_element_by_class_name("Ypffh").click()
+        campo_comentario = driver.find_element_by_class_name("Ypffh")
+        time.sleep(random.randint(2,5))
+        x = random.choice(amigos)
+        digite(x,campo_comentario)
+        amigos.remove(x)
+        time.sleep(random.randint(30,120))
+        driver.find_element_by_xpath("//button[contains(text(),'Publicar')]").click()
+        time.sleep(5)
+    except:
+        break
+        print('Error!')
+    else:
+        print('pinto')
