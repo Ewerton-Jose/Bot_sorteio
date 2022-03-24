@@ -7,11 +7,10 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 import random
 
 # Dados
-user = 'Estoradores'
-senha = 'pikuda'
-foto = 'https://www.instagram.com/p/CTGHPMig3-F/'
-amigos = ['@werisk', '@rzkcial']
-
+user = ''
+senha = ''
+foto = 'https://www.instagram.com/p/CT69hbnAN-q/'
+amigos = ['@cdnpablo @steelcurl @j.o.n.a.t.h.a.m', '@deposito_de_creme @steelcurl @cdnpablo', '@j.o.n.a.t.h.a.m @deposito_de_creme @cdnpablo', '@steelcurl @j.o.n.a.t.h.a.m @cdnpablo']
 # Abrir Navegador
 cwd = os.getcwd()
 driver = webdriver.Chrome(executable_path=r'./chromedriver.exe')
@@ -37,6 +36,8 @@ driver.get(foto)
 time.sleep(3)
 
 # Seguir
+
+"""
 try:
     driver.find_element_by_xpath("//button[contains(text(),'Seguir')]").click()
     time.sleep(2)
@@ -45,15 +46,20 @@ except:
 else:
     print('segui não')
 
+"""
+
 # curtir Publicação
+"""
 try:
     driver.find_element_by_xpath("//svg[@class='_8-yf5 ']").click()
     time.sleep(0.5)
 
 except:
-    print('Error3!')
+    print('Error2! (Não curti a publicação)')
 else:
     print('tudo ok')
+
+"""
 
 # Comentar
 def digite(frase, ondedigitar):
@@ -63,19 +69,32 @@ def digite(frase, ondedigitar):
 time.sleep(2)
 
 print(len(amigos))
-while True:
+"""while True:
     try:
         driver.find_element_by_class_name("Ypffh").click()
         campo_comentario = driver.find_element_by_class_name("Ypffh")
         time.sleep(random.randint(2,5))
         x = random.choice(amigos)
         digite(x,campo_comentario)
-        amigos.remove(x)
         time.sleep(random.randint(30,120))
         driver.find_element_by_xpath("//button[contains(text(),'Publicar')]").click()
         time.sleep(5)
     except:
-        break
-        print('Error!')
+        print('Error! Não publiquei')
     else:
         print('pinto')
+        """
+try:
+        driver.find_element_by_class_name("Ypffh").click()
+        campo_comentario = driver.find_element_by_class_name("Ypffh")
+        digite('pp',campo_comentario)
+        time.sleep(5)
+        driver.find_element_by_xpath("//button[contains(text(),'Publicar')]").click()
+        driver.find_element_by_class_name("_7UhW9   xLCgt        qyrsm      gtFbE     uL8Hv        T0kll ")
+except:
+        print('elemento não achado')
+else:
+        print('element achado')
+"""
+<div class="">Publicar</div>
+"""
