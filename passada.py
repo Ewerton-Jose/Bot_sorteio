@@ -69,7 +69,7 @@ def digite(frase, ondedigitar):
 time.sleep(2)
 
 print(len(amigos))
-"""while True:
+while True:
     try:
         driver.find_element_by_class_name("Ypffh").click()
         campo_comentario = driver.find_element_by_class_name("Ypffh")
@@ -95,6 +95,4 @@ except:
         print('elemento não achado')
 else:
         print('element achado')
-"""
-<div class="">Publicar</div>
 """
